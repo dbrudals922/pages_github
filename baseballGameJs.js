@@ -75,23 +75,11 @@ function checkNumber() {
 
         return result;
     }
-
-    // if (strike == 0 && ball == 0) { // 맞는 숫자가 하나도 없을 때
-    //     setText.innerHTML += userText + " : out!\n";
-    // } else if (strike == numLength) { // 맞췄을 때
-    //     setText.innerHTML += numLength
-    //         + "strike! you won the game!!!\nclick restart to play again\n";
-    //     document.getElementById("victoryImg").style.display = "inline";
-    // } else {
-    //     setText.innerHTML += userText + " : ";
-    //     setText.innerHTML += (strike + " strike, " + ball + " ball!\n");
-    // }
 }
 
 
 // Clicked Number Button
 const buttonClickHandler = (event) => {
-    // alert(event.target.innerText + ' Click!');
     var f = 0;
 
     while (f < answer.length) {
@@ -120,26 +108,12 @@ const buttonClickHandler = (event) => {
 
         resultNum = showResultNumber();
 
-        // const resultNum = document.createElement('div');
-
-        // resultNum.style.display = "flex";
-        // resultNum.style.padding = "0 20px";
-        // resultNum.style.justifyContent = "space-around";
-
-        // for (var i in userNum) {
-        //     const num = document.createElement('span');
-        //     num.appendChild(document.createTextNode(userNum[i]));
-        //     resultNum.appendChild(num);
-        // }
-
         resultBalls = showResultBall(userNum.join());
 
         resultItem.appendChild(resultNum);
         resultItem.appendChild(resultBalls);
 
         document.getElementsByClassName('result')[0].appendChild(resultItem);
-
-        // unfade(resultBalls);
 
     }
 };
@@ -193,58 +167,103 @@ function showResultBall(userNum) {
     var c = 1;
     for (var i in resultKeys) {
         // console.log(result[resultKeys[i]]);
+        const a = document.createElement("span");
+        a.classList.add(resultKeys[i]);
+        a.classList.add('item-' + c)
+        a.innerText = result[resultKeys[i]];
 
-        for (var j = 0; j < result[resultKeys[i]]; j++) {
-            const a = document.createElement("span");
-            a.classList.add(resultKeys[i]);
-            a.classList.add('item-' + c)
-            a.innerText = resultKeys[i];
-            a.style.width = "40px";
-            a.style.height = "40px";
-            a.style.borderRadius = "20px";
-            a.style.alignItems = "center";
-            a.style.display = "inline-flex";
-            a.style.justifyContent = "center";
-            a.style.font = "Jua";
-            a.style.color = "white";
-            a.style.opacity = 0;
-            a.style.animationName = "fadeIn";
-            a.style.animationFillMode = "forwards";
-            a.style.animationTimingFunction = "ease-out";
-            a.style.animationDuration = "1s";
+        a.style.width = "40px";
+        a.style.height = "40px";
+        a.style.borderRadius = "20px";
+        a.style.alignItems = "center";
+        a.style.display = "inline-flex";
+        a.style.justifyContent = "center";
+        a.style.font = "Jua";
+        a.style.color = "white";
+        a.style.opacity = 0;
+        a.style.animationName = "fadeIn";
+        a.style.animationFillMode = "forwards";
+        a.style.animationTimingFunction = "ease-out";
+        a.style.animationDuration = "1s";
+        a.style.fontSize = "27px";
 
-            if (c == 2) {
-                a.style.animationDelay = ".5s";
-            } else if (c == 3) {
-                a.style.animationDelay = "1s";
+        if (resultKeys[i] == "OUT") {
+            a.style.backgroundColor = "red";
 
-                const vm = this;
-                a.addEventListener("animationend", () => {
-                    if (vm.result["S"] == 3) {
-                        alert("성공!!")
-                        document.getElementsByClassName('result')[0].innerText = null;
-                    } else if (document.getElementsByClassName("result-item").length >= 9) {
-                        alert("실패!");
-                        document.getElementsByClassName('result')[0].innerText = null;
-                    }
-                    vm.resetGame();
-                });
-            }
+        } else if (resultKeys[i] == "B") {
+            a.style.backgroundColor = "#daa520";
+            a.style.animationDelay = ".5s";
+        } else {
+            a.style.backgroundColor = "green";
 
-            if (resultKeys[i] == "OUT") {
-                a.style.backgroundColor = "red";
-                a.style.fontSize = "19px";
-            } else if (resultKeys[i] == "B") {
-                a.style.backgroundColor = "#daa520";
-                a.style.fontSize = "27px";
-            } else {
-                a.style.backgroundColor = "green";
-                a.style.fontSize = "27px";
-            }
-            resultBalls.appendChild(a);
-            c++;
+            a.style.animationDelay = "1s";
 
+            const vm = this;
+            a.addEventListener("animationend", () => {
+                if (vm.result["S"] == 3) {
+                    alert("성공!!")
+                    document.getElementsByClassName('result')[0].innerText = null;
+                } else if (document.getElementsByClassName("result-item").length >= 9) {
+                    alert("실패!");
+                    document.getElementsByClassName('result')[0].innerText = null;
+                }
+                vm.resetGame();
+            });
         }
+
+        resultBalls.appendChild(a);
+
+        // for (var j = 0; j < result[resultKeys[i]]; j++) {
+        //     const a = document.createElement("span");
+        //     a.classList.add(resultKeys[i]);
+        //     a.classList.add('item-' + c)
+        //     a.innerText = resultKeys[i];
+        //     a.style.width = "40px";
+        //     a.style.height = "40px";
+        //     a.style.borderRadius = "20px";
+        //     a.style.alignItems = "center";
+        //     a.style.display = "inline-flex";
+        //     a.style.justifyContent = "center";
+        //     a.style.font = "Jua";
+        //     a.style.color = "white";
+        //     a.style.opacity = 0;
+        //     a.style.animationName = "fadeIn";
+        //     a.style.animationFillMode = "forwards";
+        //     a.style.animationTimingFunction = "ease-out";
+        //     a.style.animationDuration = "1s";
+
+        //     if (c == 2) {
+        //         a.style.animationDelay = ".5s";
+        //     } else if (c == 3) {
+        //         a.style.animationDelay = "1s";
+
+        //         const vm = this;
+        //         a.addEventListener("animationend", () => {
+        //             if (vm.result["S"] == 3) {
+        //                 alert("성공!!")
+        //                 document.getElementsByClassName('result')[0].innerText = null;
+        //             } else if (document.getElementsByClassName("result-item").length >= 9) {
+        //                 alert("실패!");
+        //                 document.getElementsByClassName('result')[0].innerText = null;
+        //             }
+        //             vm.resetGame();
+        //         });
+        //     }
+
+        //     if (resultKeys[i] == "OUT") {
+        //         a.style.backgroundColor = "red";
+        //         a.style.fontSize = "19px";
+        //     } else if (resultKeys[i] == "B") {
+        //         a.style.backgroundColor = "#daa520";
+        //         a.style.fontSize = "27px";
+        //     } else {
+        //         a.style.backgroundColor = "green";
+        //         a.style.fontSize = "27px";
+        //     }
+        //     resultBalls.appendChild(a);
+        //     c++;
+
+        // }
     }
 
     return resultBalls;
