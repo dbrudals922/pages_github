@@ -218,7 +218,7 @@ function showResultBall(userNum) {
                     // document.getElementsByClassName('result')[0].innerText = null;
                 } else if (document.getElementsByClassName("result-item").length >= 9) {
                     clearInterval(Interval);
-                    alert("실패!\n 정답은 "+ answerNum.join('')+ "이었습니다ㅠㅠ");
+                    alert("실패!\n정답은 "+ answerNum.join('')+ "이었습니다ㅠㅠ");
                     history.go(0);
                     // document.getElementsByClassName('result')[0].innerText = null;
                 }
