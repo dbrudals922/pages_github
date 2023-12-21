@@ -99,19 +99,24 @@
     </style>
 </head>
 
-
-
 <body>
     <div class="App">
         <div class="mobile-container">
-            <div class="profile m-5">
-                <form method="get">
-                    <h1>이름을 입력하세요</h1>
-                    <h5><strong>주의!!</strong> 학번 이름을 입력하신 경우에만 상품이 수여됩니다.</h5>
-                    <input type="text" name="name" id="userName" />
-
-                    <button type="button" class="btn btn-primary">입력</button>
-                </form>
+            <div class="profile mt-5">
+                <h1>이름을 입력하세요</h1>
+                <h4>주의!! <strong>학번 이름</strong>을 입력하신 경우에만 <br>상품을 받으실 수 있습니다.<strong><br>↓<br>↓</strong></h4>
+                <div class="input-group mt-3 mb-3">
+                    <input type="text" class="form-control" placeholder="이름을 입력하세요." aria-label="이름 입력"
+                        aria-describedby="basic-addon2" onkeyup="enterkey()" id="userName">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button">입력</button>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h3>입력을 누른 순간 타이머는 시작됩니다.</h3>
+                    <h4>최대한 빠른 시간 안에 3자리 숫자를 맞추세요!! </h4>
+                    <h2>1~5등에게는 <strong>엄청난 상품</strong>을 드립니다!!!</h2>
+                </div>
             </div>
             <div class=" game d-flex flex-column" style="opacity: 0;">
                 <h1 class="my-3">숫자 야구 게임</h1>
@@ -140,7 +145,8 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="./baseballGameJs.js"></script>
+    <script type="text/javascript" src="./baseballGameJs.js">
+    </script>
 </body>
 
 </html>
