@@ -6,14 +6,22 @@ var userNum = new Array();
 const button = Array.prototype.slice.call(document.querySelectorAll('button'));
 const backButton = document.querySelectorAll('button')[1];
 
+var userName = null;
+
+var seconds = 0;
+var tens = 0;
+var Interval = null;
+
+const submitButton = button[0];
+button.shift()
+button.shift()
+
+
 const answer = document.getElementsByClassName('answer-item');
 
 window.onload = function () {
     setNumber();
-    button[0].addEventListener('click', getUserName);
-
-    button.shift()
-    button.shift()
+    submitButton.addEventListener('click', getUserName);
 
     // ADD CLICK EVENT
     for (var i in button) {
@@ -21,6 +29,9 @@ window.onload = function () {
         i++;
     }
     backButton.addEventListener('click', backButtonClickHandler);
+
+
+
 }
 
 
@@ -201,11 +212,16 @@ function showResultBall(userNum) {
             const vm = this;
             a.addEventListener("animationend", () => {
                 if (vm.result["S"] == 3) {
-                    alert("성공!!")
-                    document.getElementsByClassName('result')[0].innerText = null;
+                    clearInterval(Interval);
+                    alert("성공!!\n" + seconds + "." + tens + "초!!")
+                    uploadRanking(seconds + "." + tens);
+                    history.go(0);
+                    // document.getElementsByClassName('result')[0].innerText = null;
                 } else if (document.getElementsByClassName("result-item").length >= 9) {
+                    clearInterval(Interval);
                     alert("실패!");
-                    document.getElementsByClassName('result')[0].innerText = null;
+                    history.go(0);
+                    // document.getElementsByClassName('result')[0].innerText = null;
                 }
                 vm.resetGame();
             });
@@ -281,10 +297,36 @@ function resetGame() {
 }
 
 function getUserName() {
-    console.log(document.getElementById("userName").value);
+    clearInterval(Interval);
+    Interval = setInterval(startTimer, 10);
+
+    userName = document.getElementById("userName").value;
 
     document.getElementsByClassName('profile')[0].style.display = "none";
     document.getElementsByClassName('game')[0].style.opacity = 100;
+}
+
+function enterkey() {
+    if (window.event.key == 'Enter') {
+        getUserName();
+    }
+
+}
+
+function startTimer() {
+    tens++;
+
+    if (tens > 99) {
+        // console.log("seconds");
+        seconds++;
+        // appendSeconds.innerHTML = "0" + seconds;
+        tens = 0;
+        // appendTens.innerHTML = "0" + 0;
+    }
+}
+
+function uploadRanking(time) {
+    // parseFloat(time)
 
 
 }
