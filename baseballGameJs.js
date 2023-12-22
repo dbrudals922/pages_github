@@ -206,10 +206,10 @@ function showResultBall(userNum) {
             a.style.backgroundColor = "red";
 
         } else if (resultKeys[i] == "B") {
-            a.style.backgroundColor = "#daa520";
+            a.style.backgroundColor = "green";
             a.style.animationDelay = ".5s";
         } else {
-            a.style.backgroundColor = "green";
+            a.style.backgroundColor = "#daa520";
 
             a.style.animationDelay = "1s";
 
