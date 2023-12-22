@@ -16,6 +16,8 @@ const submitButton = button[0];
 button.shift()
 button.shift()
 
+var count = 0;
+
 
 const answer = document.getElementsByClassName('answer-item');
 
@@ -120,8 +122,11 @@ const buttonClickHandler = (event) => {
 
         resultBalls = showResultBall(userNum.join());
 
+
+        count++;
         resultItem.appendChild(resultNum);
         resultItem.appendChild(resultBalls);
+
 
         document.getElementsByClassName('result')[0].appendChild(resultItem);
 
@@ -212,13 +217,13 @@ function showResultBall(userNum) {
             a.addEventListener("animationend", () => {
                 if (vm.result["S"] == 3) {
                     clearInterval(Interval);
-                    alert("성공!!\n" + seconds + "." + tens + "초!!")
+                    alert("성공!! " + userName + "님의 결과: \n" + "총 " + count + "번, " + seconds + "." + tens + "초가 걸렸습니다.")
                     uploadRanking(seconds + "." + tens);
                     history.go(0);
                     // document.getElementsByClassName('result')[0].innerText = null;
                 } else if (document.getElementsByClassName("result-item").length >= 9) {
                     clearInterval(Interval);
-                    alert("실패!\n정답은 "+ answerNum.join('')+ "이었습니다ㅠㅠ");
+                    alert("실패!\n정답은 " + answerNum.join('') + "이었습니다ㅠㅠ");
                     history.go(0);
                     // document.getElementsByClassName('result')[0].innerText = null;
                 }
@@ -228,57 +233,6 @@ function showResultBall(userNum) {
 
         resultBalls.appendChild(a);
 
-        // for (var j = 0; j < result[resultKeys[i]]; j++) {
-        //     const a = document.createElement("span");
-        //     a.classList.add(resultKeys[i]);
-        //     a.classList.add('item-' + c)
-        //     a.innerText = resultKeys[i];
-        //     a.style.width = "40px";
-        //     a.style.height = "40px";
-        //     a.style.borderRadius = "20px";
-        //     a.style.alignItems = "center";
-        //     a.style.display = "inline-flex";
-        //     a.style.justifyContent = "center";
-        //     a.style.font = "Jua";
-        //     a.style.color = "white";
-        //     a.style.opacity = 0;
-        //     a.style.animationName = "fadeIn";
-        //     a.style.animationFillMode = "forwards";
-        //     a.style.animationTimingFunction = "ease-out";
-        //     a.style.animationDuration = "1s";
-
-        //     if (c == 2) {
-        //         a.style.animationDelay = ".5s";
-        //     } else if (c == 3) {
-        //         a.style.animationDelay = "1s";
-
-        //         const vm = this;
-        //         a.addEventListener("animationend", () => {
-        //             if (vm.result["S"] == 3) {
-        //                 alert("성공!!")
-        //                 document.getElementsByClassName('result')[0].innerText = null;
-        //             } else if (document.getElementsByClassName("result-item").length >= 9) {
-        //                 alert("실패!");
-        //                 document.getElementsByClassName('result')[0].innerText = null;
-        //             }
-        //             vm.resetGame();
-        //         });
-        //     }
-
-        //     if (resultKeys[i] == "OUT") {
-        //         a.style.backgroundColor = "red";
-        //         a.style.fontSize = "19px";
-        //     } else if (resultKeys[i] == "B") {
-        //         a.style.backgroundColor = "#daa520";
-        //         a.style.fontSize = "27px";
-        //     } else {
-        //         a.style.backgroundColor = "green";
-        //         a.style.fontSize = "27px";
-        //     }
-        //     resultBalls.appendChild(a);
-        //     c++;
-
-        // }
     }
 
     return resultBalls;
