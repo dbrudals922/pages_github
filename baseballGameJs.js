@@ -57,7 +57,7 @@ function setNumber() {
         check = true;
     }
 
-    console.log(answerNum);
+    // console.log(answerNum);
     // document.getElementById("answer").innerText = getNum;
 }
 
