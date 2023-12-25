@@ -40,7 +40,7 @@ class WindowClass(QMainWindow, form_class):
 
        
 def Diff(li1, li2):
-    return (list(list(set(li1) - set(li2)) + list(set(li2) - set(li1))))
+    return [x for x in li2 if x not in li1]
 
     
 def file_check():
@@ -50,7 +50,7 @@ def file_check():
         b = os.listdir(path)
         if Diff(a, b): 
         
-            changed = path + [x for x in b if x not in a][0]
+            changed = path + Diff(a, b)[0]
             
             f = open(changed, 'r')
             line = json.loads(f.readline())
@@ -75,3 +75,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
             
     file_check()
+
