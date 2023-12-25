@@ -33,7 +33,7 @@ class WindowClass(QMainWindow, form_class):
         tf.write(self.score + "/" + self.studentNum.text() + "/" + self.name.text() + "/" + self.phoneNum.text() + "\n")
         tf.close()
         
-        self.deleteLater()
+        self.close()
         
         return
 
