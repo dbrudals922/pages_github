@@ -46,7 +46,7 @@ def Diff(li1, li2):
 def file_check():
     a = os.listdir(path)
     while True:
-        time.sleep(1)
+        time.sleep(2)
         b = os.listdir(path)
         if Diff(a, b): 
         
