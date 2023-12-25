@@ -24,7 +24,6 @@ class WindowClass(QMainWindow, form_class):
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         self.setupUi(self)
 
-                
         self.score = score
         self.scoreView.setText(score)
         
@@ -38,17 +37,19 @@ class WindowClass(QMainWindow, form_class):
     def reject(self):
         print("close")
         self.close()
+
        
+def Diff(li1, li2):
+    return (list(list(set(li1) - set(li2)) + list(set(li2) - set(li1))))
 
     
 def file_check():
     a = os.listdir(path)
-    path_len_org = len(a)
     while True:
-        time.sleep(2)
+        time.sleep(1)
         b = os.listdir(path)
-        path_len_final = len(b)
-        if path_len_org < path_len_final:
+        if Diff(a, b): 
+        
             changed = path + [x for x in b if x not in a][0]
             
             f = open(changed, 'r')
@@ -65,15 +66,8 @@ def file_check():
             os.remove(changed)
             
             print("했당")
+        a = b
             
-            
-        elif path_len_org > path_len_final:
-            print("A file is removed")
-            return
-            # return "file is removed"
-        else:
-            pass
-
 
 if __name__ == "__main__":
     # file_check()
@@ -81,4 +75,3 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
             
     file_check()
-
