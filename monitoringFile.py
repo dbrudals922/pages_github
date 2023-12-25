@@ -34,8 +34,6 @@ class WindowClass(QMainWindow, form_class):
         tf.close()
         
         self.close()
-        
-        return
 
     def reject(self):
         print("close")
