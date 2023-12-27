@@ -8,7 +8,7 @@ from openpyxl import Workbook
 localIP     = "127.0.0.1"
 localPort   = 12345
 
-resultPath = "/Users/rudals/Desktop/tetrisRank.xlsx"
+resultPath = "C:/Users/User/Desktop/tetrisRank.xlsx"
 
 msgFromServer       = "응답완료"
 bytesToSend         = str.encode(msgFromServer)
