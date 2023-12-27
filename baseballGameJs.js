@@ -16,8 +16,6 @@ const submitButton = button[0];
 button.shift()
 button.shift()
 
-var count = 0;
-
 
 const answer = document.getElementsByClassName('answer-item');
 
@@ -123,7 +121,6 @@ const buttonClickHandler = (event) => {
         resultBalls = showResultBall(userNum.join());
 
 
-        count++;
         resultItem.appendChild(resultNum);
         resultItem.appendChild(resultBalls);
 
@@ -217,7 +214,7 @@ function showResultBall(userNum) {
             a.addEventListener("animationend", () => {
                 if (vm.result["S"] == 3) {
                     clearInterval(Interval);
-                    alert("성공!! " + userName + "님의 결과: \n" + "총 " + count + "번, " + seconds + "." + tens + "초가 걸렸습니다.")
+                    alert("성공!! " + userName + "님의 결과: \n" + seconds + "." + tens + "초가 걸렸습니다.")
                     uploadRanking(seconds + "." + tens);
                     history.go(0);
                     // document.getElementsByClassName('result')[0].innerText = null;
@@ -280,6 +277,10 @@ function startTimer() {
 
 function uploadRanking(time) {
     // parseFloat(time)
+    baseballURL = "http://127.0.0.1:5001/ranking/" + userName + "/" + time
 
+    // console.log(baseballURL)
+
+    fetch(baseballURL);
 
 }
