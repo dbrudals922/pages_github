@@ -12,7 +12,7 @@ import socket
 # 단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
 form_class = uic.loadUiType("tetrisScoreForm.ui")[0]
 
-path = "/Users/rudals/Downloads/"
+path = "C:/Users/User/Downloads/"
 
 # 소켓 주소
 serverAddressPort   = ("10.204.12.100", 12345)
