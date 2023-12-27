@@ -15,7 +15,7 @@ form_class = uic.loadUiType("tetrisScoreForm.ui")[0]
 path = "/Users/rudals/Downloads/"
 
 # 소켓 주소
-serverAddressPort   = ("127.0.0.1", 12345)
+serverAddressPort   = ("10.204.12.100", 12345)
 
 
 # 화면을 띄우는데 사용되는 Class 선언
