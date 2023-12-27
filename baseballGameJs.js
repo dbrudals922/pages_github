@@ -277,7 +277,7 @@ function startTimer() {
 
 function uploadRanking(time) {
     // parseFloat(time)
-    baseballURL = "http://127.0.0.1:5001/ranking/" + userName + "/" + time
+    baseballURL = "http://10.204.12.100:5001/ranking/" + userName + "/" + time
 
     // console.log(baseballURL)
 
