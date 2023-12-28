@@ -281,6 +281,6 @@ function uploadRanking(time) {
 
     // console.log(baseballURL)
 
-    fetch(baseballURL);
+    fetch(baseballURL).then((response)=>console.log(response);
 
 }
