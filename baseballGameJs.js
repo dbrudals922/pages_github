@@ -216,7 +216,7 @@ function showResultBall(userNum) {
                     clearInterval(Interval);
                     alert("성공!! " + userName + "님의 결과: \n" + seconds + "." + tens + "초가 걸렸습니다.")
                     uploadRanking(seconds + "." + tens);
-                    history.go(0);
+                    // history.go(0);
                     // document.getElementsByClassName('result')[0].innerText = null;
                 } else if (document.getElementsByClassName("result-item").length >= 9) {
                     clearInterval(Interval);
